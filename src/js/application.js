@@ -1,5 +1,7 @@
+import { Repositories, Repository, SceneExplorer } from 'harmony-3d';
 import { createElement } from 'harmony-ui';
 
+import { CS2_REPOSITORY } from './constants.js';
 import { Controller } from './controller.js';
 import { Statusbar } from './view/statusbar.js';
 import { Toolbar } from './view/toolbar.js';
@@ -12,17 +14,15 @@ class Application {
 	#appStatusbar = new Statusbar();
 	#appToolbar = new Toolbar();
 	#appViewer = new Viewer();
-	#files = new Set();
 	#html;
 	constructor() {
 		this.#initListeners();
 		this.#initHTML();
+		this.#iniRepositories();
 	}
 
 	#initListeners() {
-		Controller.addEventListener('createnewfile', event => this.#createNewFile());
 	}
-
 
 	#initHTML() {
 		this.#html = createElement('div', {
@@ -30,14 +30,23 @@ class Application {
 			parent: document.body,
 			childs: [
 				this.#appToolbar.html,
-				this.#appViewer.html,
+				createElement('div', {
+					className: 'maincontent',
+					childs: [
+						createElement('div', {
+							className: 'maincontent-sceneexplorer',
+							child: SceneExplorer.htmlElement,
+						}),
+						this.#appViewer.html,
+					]
+				}),
 				this.#appStatusbar.html,
 			],
 		});
 	}
 
-	#createNewFile() {
-		console.log('executing #createNewFile');
+	#iniRepositories() {
+		Repositories.addRepository(new Repository('cs2', CS2_REPOSITORY));
 	}
 }
 new Application();
