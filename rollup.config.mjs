@@ -1,4 +1,5 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import json from '@rollup/plugin-json';
 import copy from 'rollup-plugin-copy';
 import styles from 'rollup-plugin-styler';
 
@@ -15,6 +16,9 @@ export default [
 					'inject',
 					(varname) => `import { styleInject } from 'harmony-ui';styleInject(${varname});`
 				],
+			}),
+			json({
+				compact: true,
 			}),
 			nodeResolve(),
 			copy({

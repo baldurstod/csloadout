@@ -4,6 +4,7 @@ import { createElement } from 'harmony-ui';
 
 import { CS2_REPOSITORY } from './constants.js';
 import { Controller } from './controller.js';
+import { showAboutLayer } from './misc/about.js';
 import { Options } from './view/options.js';
 import { Statusbar } from './view/statusbar.js';
 import { Toolbar } from './view/toolbar.js';
@@ -11,7 +12,8 @@ import { Viewer } from './view/viewer.js';
 
 import '../css/application.css';
 import '../css/vars.css';
-import { showAboutLayer } from './misc/about.js';
+
+import english from '../json/i18n/english.json';
 
 class Application {
 	#appOptions = new Options();
@@ -20,6 +22,7 @@ class Application {
 	#appViewer = new Viewer();
 	#htmlElement;
 	constructor() {
+		I18n.setOptions({ translations:[english] });
 		I18n.start();
 		this.#initListeners();
 		this.#initHTML();
