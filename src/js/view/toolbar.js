@@ -12,14 +12,10 @@ export class Toolbar {
 	#initHTML() {
 		this.#htmlElement = createElement('div', {
 			class: 'toolbar',
-			innerText: 'this is the toolbar',
 			childs: [
 				createElement('div', {
-					class: 'button',
-					innerText: 'new file',
-					events: {
-						click: () => Controller.dispatchEvent(new CustomEvent('createnewfile')),
-					},
+					class: 'toolbar-items',
+					innerText: '<<<<<<<<<items>>>>>>>>',
 				}),
 				createElement('div', {
 					class: 'toolbar-buttons',

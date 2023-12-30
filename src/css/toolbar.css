@@ -5,6 +5,13 @@
 	flex: 0;
 	display: flex;
 }
+.toolbar-items{
+	flex: 1;
+}
+.toolbar-buttons{
+	margin: 0.1rem;
+	flex: 0;
+}
 
 .toolbar-button > svg {
     height: 2.8rem;
