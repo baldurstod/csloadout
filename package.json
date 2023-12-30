@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"description": "Source for csloadout.com",
 	"dependencies": {
+		"harmony-browser-utils": "github:baldurstod/harmony-browser-utils",
 		"harmony-ui": "github:baldurstod/harmony-ui"
 	},
 	"devDependencies": {
