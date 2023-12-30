@@ -1,5 +1,6 @@
+import { createElement } from 'harmony-ui';
+
 import { Controller } from './controller.js';
-import { Editor } from './view/editor.js';
 import { Statusbar } from './view/statusbar.js';
 import { Toolbar } from './view/toolbar.js';
 import { Viewer } from './view/viewer.js';
@@ -8,11 +9,11 @@ import '../css/application.css';
 import '../css/vars.css';
 
 class Application {
-	#editor = new Editor();
 	#appStatusbar = new Statusbar();
 	#appToolbar = new Toolbar();
 	#appViewer = new Viewer();
 	#files = new Set();
+	#html;
 	constructor() {
 		this.#initListeners();
 		this.#initHTML();
@@ -24,10 +25,14 @@ class Application {
 
 
 	#initHTML() {
-		document.body.append(this.#appToolbar.html);
-		document.body.append(this.#editor.html);
-		document.body.append(this.#appViewer.html);
-		document.body.append(this.#appStatusbar.html);
+		this.#html = createElement('div', {
+			parent: document.body,
+			childs: [
+				this.#appToolbar.html,
+				this.#appViewer.html,
+				this.#appStatusbar.html,
+			],
+		});
 	}
 
 	#createNewFile() {
