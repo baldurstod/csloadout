@@ -6,7 +6,7 @@ import { Controller } from '../controller';
 import '../../css/viewer.css';
 
 export class Viewer {
-	#html;
+	#htmlElement;
 	#htmlCanvas;
 
 	#renderer;
@@ -22,13 +22,13 @@ export class Viewer {
 	}
 
 	#initHTML() {
-		this.#html = createElement('div', {
+		this.#htmlElement = createElement('div', {
 			class: 'viewer',
 			childs: [
 				this.#htmlCanvas = createElement('canvas'),
 			],
 		})
-		return this.#html;
+		return this.#htmlElement;
 	}
 
 	#initRenderer() {
@@ -68,7 +68,7 @@ export class Viewer {
 		this.#scene.addChild(model);
 	}
 
-	get html() {
-		return this.#html;
+	get htmlElement() {
+		return this.#htmlElement;
 	}
 }

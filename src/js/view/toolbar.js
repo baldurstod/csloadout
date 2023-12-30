@@ -4,12 +4,12 @@ import { Controller } from '../controller';
 import '../../css/toolbar.css';
 
 export class Toolbar {
-	#html;
+	#htmlElement;
 	constructor() {
 	}
 
 	#initHTML() {
-		this.#html = createElement('div', {
+		this.#htmlElement = createElement('div', {
 			class: 'toolbar',
 			innerText: 'this is the toolbar',
 			childs: [
@@ -23,11 +23,11 @@ export class Toolbar {
 
 			],
 		})
-		return this.#html;
+		return this.#htmlElement;
 
 	}
 
-	get html() {
-		return this.#html ?? this.#initHTML();
+	get htmlElement() {
+		return this.#htmlElement ?? this.#initHTML();
 	}
 }

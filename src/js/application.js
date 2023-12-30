@@ -14,7 +14,7 @@ class Application {
 	#appStatusbar = new Statusbar();
 	#appToolbar = new Toolbar();
 	#appViewer = new Viewer();
-	#html;
+	#htmlElement;
 	constructor() {
 		this.#initListeners();
 		this.#initHTML();
@@ -26,11 +26,11 @@ class Application {
 	}
 
 	#initHTML() {
-		this.#html = createElement('div', {
+		this.#htmlElement = createElement('div', {
 			className: 'application',
 			parent: document.body,
 			childs: [
-				this.#appToolbar.html,
+				this.#appToolbar.htmlElement,
 				createElement('div', {
 					className: 'maincontent',
 					childs: [
@@ -38,10 +38,10 @@ class Application {
 							className: 'maincontent-sceneexplorer',
 							child: SceneExplorer.htmlElement,
 						}),
-						this.#appViewer.html,
+						this.#appViewer.htmlElement,
 					]
 				}),
-				this.#appStatusbar.html,
+				this.#appStatusbar.htmlElement,
 			],
 		});
 	}
