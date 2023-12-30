@@ -4,7 +4,7 @@ import { createElement } from 'harmony-ui';
 
 import { CS2_REPOSITORY } from './constants.js';
 import { Controller } from './controller.js';
-import { showAboutLayer } from './misc/about.js';
+import { showAboutLayer, showBugNotification } from './misc/about.js';
 import { Options } from './view/options.js';
 import { Statusbar } from './view/statusbar.js';
 import { Toolbar } from './view/toolbar.js';
@@ -34,6 +34,7 @@ class Application {
 		Controller.addEventListener('play', () => Graphics.speed = 1.0);
 		Controller.addEventListener('pause', () => Graphics.speed = 0.0);
 		Controller.addEventListener('showabout', () => showAboutLayer());
+		Controller.addEventListener('showbug', () => showBugNotification());
 	}
 
 	#initHTML() {

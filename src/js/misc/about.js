@@ -1,5 +1,6 @@
 import { I18n } from "harmony-browser-utils/src/i18n";
 import { NotificationManager } from 'harmony-browser-utils/src/notificationManager.js';
+import { TF2_GROUP_URL } from "../constants";
 
 export function showAboutLayer() {
 	let html = `${I18n.getString('#csloadout_service_provided')}<a href="http://steamcommunity.com/id/baldurstod/" target="_blank">Baldurs Tod</a><br>
@@ -8,5 +9,10 @@ export function showAboutLayer() {
 	${I18n.getString('#model_texture_files_property')}<a href="http://www.valvesoftware.com/" target="_blank">Valve Corporation</a><br>
 	${I18n.getString('#valve_tf_trademarks')}`;
 
+	NotificationManager.addNotification(html, 'info', 15);
+}
+
+export function showBugNotification() {
+	let html = '<a href="' + TF2_GROUP_URL + '" target="_blank" class="i18n" data-i18n="#get_assistance_on_steam"></a><br><a href="https://discord.gg/7EhW2WCWyQ" target="_blank" class="i18n" data-i18n="#get_assistance_on_discord"></a>';
 	NotificationManager.addNotification(html, 'info', 15);
 }

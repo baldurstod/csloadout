@@ -2,9 +2,7 @@ import { createElement, hide, show } from 'harmony-ui';
 import { Controller } from '../controller';
 
 import '../../css/toolbar.css';
-import { manufacturingSVG, moreHorizSVG, pauseSVG, playSVG, settingsSVG } from 'harmony-svg';
-
-
+import { bugReportSVG, manufacturingSVG, moreHorizSVG, pauseSVG, playSVG, settingsSVG } from 'harmony-svg';
 
 function createButton(svg, eventName, i18n) {
 	return createElement('div', {
@@ -50,6 +48,7 @@ export class Toolbar {
 					childs: [
 						this.#htmlPlay = createButton(playSVG, 'play'),
 						this.#htmlPause = createButton(pauseSVG, 'pause'),
+						createButton(bugReportSVG, 'showbug'),
 						createButton(settingsSVG, 'toggleoptions'),
 						createButton(manufacturingSVG, 'toggleadvancedoptions'),
 						createButton(moreHorizSVG, 'showabout'),
