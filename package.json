@@ -1,0 +1,15 @@
+{
+	"name": "csloadout",
+	"version": "0.0.1",
+	"description": "Source for csloadout.com",
+	"dependencies": {
+		"harmony-ui": "github:baldurstod/harmony-ui"
+	},
+	"devDependencies": {
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-terser": "^0.4.4",
+		"rollup": "^4.9.2",
+		"rollup-plugin-copy": "^3.5.0",
+		"rollup-plugin-styler": "^1.8.0"
+	}
+}
