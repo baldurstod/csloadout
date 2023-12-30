@@ -52,7 +52,7 @@ export class Toolbar {
 						this.#htmlPause = createButton(pauseSVG, 'pause'),
 						createButton(settingsSVG, 'toggleoptions'),
 						createButton(manufacturingSVG, 'toggleadvancedoptions'),
-						createButton(moreHorizSVG, 'showmore'),
+						createButton(moreHorizSVG, 'showabout'),
 					]
 				}),
 			],

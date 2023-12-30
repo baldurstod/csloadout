@@ -11,6 +11,7 @@ import { Viewer } from './view/viewer.js';
 
 import '../css/application.css';
 import '../css/vars.css';
+import { showAboutLayer } from './misc/about.js';
 
 class Application {
 	#appOptions = new Options();
@@ -29,6 +30,7 @@ class Application {
 	#initListeners() {
 		Controller.addEventListener('play', () => Graphics.speed = 1.0);
 		Controller.addEventListener('pause', () => Graphics.speed = 0.0);
+		Controller.addEventListener('showabout', () => showAboutLayer());
 	}
 
 	#initHTML() {
