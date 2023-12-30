@@ -1,4 +1,4 @@
-import { Repositories, Repository, SceneExplorer, Source2ModelManager } from 'harmony-3d';
+import { Graphics, Repositories, Repository, SceneExplorer, Source2ModelManager } from 'harmony-3d';
 import { I18n } from 'harmony-browser-utils/src/i18n.js';
 import { createElement } from 'harmony-ui';
 
@@ -27,6 +27,8 @@ class Application {
 	}
 
 	#initListeners() {
+		Controller.addEventListener('play', () => Graphics.speed = 1.0);
+		Controller.addEventListener('pause', () => Graphics.speed = 0.0);
 	}
 
 	#initHTML() {
