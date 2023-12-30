@@ -19,6 +19,7 @@ class Application {
 		this.#initListeners();
 		this.#initHTML();
 		this.#iniRepositories();
+		this.#appViewer.initModel();
 	}
 
 	#initListeners() {
