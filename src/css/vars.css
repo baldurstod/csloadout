@@ -1,3 +1,18 @@
+body{
+	--theme-context-menu-bg-color: #333333;
+	--theme-context-menu-item-bg-color: #333333;
+	--theme-context-menu-item-selected-bg-color: #333333;
+	--theme-context-menu-submenu-bg-color: #333333;
+	--theme-context-menu-submenu-fg-color: #888888;
+	--theme-context-menu-item-hover-bg-color: #000000;
+
+	--theme-scene-explorer-bg-color: #222222;
+	--theme-scene-explorer-entity-selected-bg-color: #000000;
+	--theme-scene-explorer-entity-drag-bg-color: red;
+	--theme-scene-explorer-entity-header-hover-bg-color: #000000;
+	--theme-file-selector-item-hover-bg-color: #0F0F0F;
+}
+
 @media (prefers-color-scheme: light){
 	body{
 		--background-primary: #fff;
