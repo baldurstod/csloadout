@@ -12,10 +12,15 @@ body{
 	margin:0rem;
 	overflow: hidden;
 	background-color: #000000;
-	height:100%;
-	width:100%;
-	display: flex;
 	justify-content: center;
 	background-color: var(--background-primary);
+
+	height:100%;
+	width:100%;
+}
+.application{
+	display: flex;
 	flex-direction: column;
+	height:100%;
+	width:100%;
 }

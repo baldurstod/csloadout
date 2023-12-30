@@ -1,3 +1,4 @@
 .viewer{
-	max-height: 500px;
+	flex: 1;
+	overflow: hidden;
 }

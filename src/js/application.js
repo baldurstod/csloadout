@@ -26,6 +26,7 @@ class Application {
 
 	#initHTML() {
 		this.#html = createElement('div', {
+			className: 'application',
 			parent: document.body,
 			childs: [
 				this.#appToolbar.html,
