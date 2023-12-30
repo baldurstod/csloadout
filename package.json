@@ -4,6 +4,7 @@
 	"description": "Source for csloadout.com",
 	"dependencies": {
 		"harmony-browser-utils": "github:baldurstod/harmony-browser-utils",
+		"harmony-svg": "github:baldurstod/harmony-svg",
 		"harmony-ui": "github:baldurstod/harmony-ui"
 	},
 	"devDependencies": {
