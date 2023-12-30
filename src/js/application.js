@@ -1,8 +1,10 @@
 import { Repositories, Repository, SceneExplorer, Source2ModelManager } from 'harmony-3d';
+import { I18n } from 'harmony-browser-utils/src/i18n.js';
 import { createElement } from 'harmony-ui';
 
 import { CS2_REPOSITORY } from './constants.js';
 import { Controller } from './controller.js';
+import { Options } from './view/options.js';
 import { Statusbar } from './view/statusbar.js';
 import { Toolbar } from './view/toolbar.js';
 import { Viewer } from './view/viewer.js';
@@ -11,11 +13,13 @@ import '../css/application.css';
 import '../css/vars.css';
 
 class Application {
+	#appOptions = new Options();
 	#appStatusbar = new Statusbar();
 	#appToolbar = new Toolbar();
 	#appViewer = new Viewer();
 	#htmlElement;
 	constructor() {
+		I18n.start();
 		this.#initListeners();
 		this.#initHTML();
 		this.#iniRepositories();
@@ -34,10 +38,7 @@ class Application {
 				createElement('div', {
 					className: 'maincontent',
 					childs: [
-						createElement('div', {
-							className: 'maincontent-sceneexplorer',
-							child: SceneExplorer.htmlElement,
-						}),
+						this.#appOptions.htmlElement,
 						this.#appViewer.htmlElement,
 					]
 				}),
