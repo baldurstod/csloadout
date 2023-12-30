@@ -1,9 +1,10 @@
-import { createElement } from 'harmony-ui';
+import { createElement, hide, toggle } from 'harmony-ui';
 
 import 'harmony-ui/dist/define/harmony-tab.js';
 import 'harmony-ui/dist/define/harmony-tab-group.js';
 import '../../css/options.css';
 import { SceneExplorer, ShaderEditor } from 'harmony-3d';
+import { Controller } from '../controller';
 
 export class Options {
 	#htmlElement;
@@ -11,6 +12,7 @@ export class Options {
 
 	#initHTML() {
 		this.#htmlElement = createElement('div', {
+			hidden: true,
 			class: 'options',
 			child: createElement('harmony-tab-group', {
 				childs: [
@@ -34,6 +36,10 @@ export class Options {
 
 			}),
 		})
+
+		Controller.addEventListener('closeoptions', () => hide(this.#htmlElement));
+		Controller.addEventListener('toggleoptions', () => toggle(this.#htmlElement));
+
 		return this.#htmlElement;
 	}
 

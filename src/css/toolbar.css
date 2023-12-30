@@ -3,4 +3,10 @@
 	width:100%;
 	background-color: chocolate;
 	flex: 0;
+	display: flex;
+}
+
+.toolbar-button > svg {
+    height: 2.8rem;
+    width: 2.8rem;
 }
