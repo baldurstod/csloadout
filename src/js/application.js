@@ -14,6 +14,7 @@ import '../css/application.css';
 import '../css/vars.css';
 
 import english from '../json/i18n/english.json';
+import { Loadout } from './loadout/loadout.js';
 
 class Application {
 	#appOptions = new Options();
@@ -28,6 +29,7 @@ class Application {
 		this.#initHTML();
 		this.#iniRepositories();
 		this.#appViewer.initModel();
+		Loadout.init();
 	}
 
 	#initListeners() {
