@@ -41,7 +41,20 @@ export class Toolbar {
 			childs: [
 				createElement('div', {
 					class: 'toolbar-items',
-					innerText: '<<<<<<<<<items>>>>>>>>',
+					childs: [
+						createElement('div', {
+							innerText: 'characters',
+							events: {
+								click: () => Controller.dispatchEvent(new CustomEvent('displaycharacters')),
+							},
+						}),
+						createElement('div', {
+							innerText: 'weapons',
+							events: {
+								click: () => Controller.dispatchEvent(new CustomEvent('displayweapons')),
+							},
+						}),
+					],
 				}),
 				createElement('div', {
 					class: 'toolbar-buttons',

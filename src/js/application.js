@@ -4,8 +4,10 @@ import { createElement } from 'harmony-ui';
 
 import { CS2_REPOSITORY } from './constants.js';
 import { Controller } from './controller.js';
+import { Loadout } from './loadout/loadout.js';
 import { showAboutLayer, showBugNotification } from './misc/about.js';
 import { Options } from './view/options.js';
+import { ItemList } from './view/itemlist.js';
 import { Statusbar } from './view/statusbar.js';
 import { Toolbar } from './view/toolbar.js';
 import { Viewer } from './view/viewer.js';
@@ -14,9 +16,9 @@ import '../css/application.css';
 import '../css/vars.css';
 
 import english from '../json/i18n/english.json';
-import { Loadout } from './loadout/loadout.js';
 
 class Application {
+	#appItemList = new ItemList();
 	#appOptions = new Options();
 	#appStatusbar = new Statusbar();
 	#appToolbar = new Toolbar();
@@ -50,6 +52,7 @@ class Application {
 					childs: [
 						this.#appOptions.htmlElement,
 						this.#appViewer.htmlElement,
+						this.#appItemList.htmlElement,
 					]
 				}),
 				this.#appStatusbar.htmlElement,

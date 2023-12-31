@@ -4,14 +4,12 @@ import '../../css/statusbar.css';
 
 export class Statusbar {
 	#htmlElement;
-	constructor() {
-	}
 
 	#initHTML() {
 		this.#htmlElement = createElement('div', {
 			class: 'statusbar',
 			innerText: 'this is the statusbar',
-		})
+		});
 		return this.#htmlElement;
 
 	}
