@@ -4,19 +4,18 @@ import { createElement } from 'harmony-ui';
 import { Controller } from '../controller';
 
 import '../../css/viewer.css';
+import { loadoutCamera, loadoutScene } from '../loadout/scene';
 
 export class Viewer {
 	#htmlElement;
 	#htmlCanvas;
 
 	#renderer;
-	#scene = new Scene();
-	#camera = new Camera();
 	#orbitControl;
 	constructor() {
 		this.#initHTML();
-		this.#orbitControl = new OrbitControl(this.#camera, this.#htmlCanvas);
-		this.#camera.position = [100, 0, 40];
+		this.#orbitControl = new OrbitControl(loadoutCamera, this.#htmlCanvas);
+		loadoutCamera.position = [100, 0, 40];
 		this.#orbitControl.setTargetPosition([0, 0, 40]);
 		this.#initRenderer();
 	}
@@ -32,10 +31,7 @@ export class Viewer {
 	}
 
 	#initRenderer() {
-		SceneExplorer.scene = this.#scene;
-		this.#scene.activeCamera = this.#camera;
-		this.#scene.addChild(this.#camera);
-		this.#scene.addChild(new AmbientLight());
+		loadoutScene.addChild(new AmbientLight());
 
 		this.#renderer = Graphics.initCanvas({
 			canvas: this.#htmlCanvas,
@@ -52,11 +48,11 @@ export class Viewer {
 			if (this.composer?.enabled) {
 				this.composer.render(event.detail.delta);
 			} else {
-				Graphics.render(this.#scene, this.#scene.activeCamera, event.detail.delta);
+				Graphics.render(loadoutScene, loadoutScene.activeCamera, event.detail.delta);
 			}
 		});
 
-		ContextObserver.observe(GraphicsEvents, this.#camera);
+		ContextObserver.observe(GraphicsEvents, loadoutCamera);
 		this.#renderer.play();
 	}
 
@@ -65,7 +61,7 @@ export class Viewer {
 		const fileName = 'characters/models/ctm_diver/ctm_diver_varianta';
 
 		const model = await Source2ModelManager.createInstance('cs2', fileName, true);
-		this.#scene.addChild(model);
+		loadoutScene.addChild(model);
 	}
 
 	get htmlElement() {
