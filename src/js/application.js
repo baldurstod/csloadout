@@ -37,6 +37,10 @@ class Application {
 		Controller.addEventListener('pause', () => Graphics.speed = 0.0);
 		Controller.addEventListener('showabout', () => showAboutLayer());
 		Controller.addEventListener('showbug', () => showBugNotification());
+
+		Controller.addEventListener('toggleoptions', () => Controller.dispatchEvent(new CustomEvent('closeitemlist')));
+		Controller.addEventListener('displaycharacters', () => Controller.dispatchEvent(new CustomEvent('closeoptions')));
+		Controller.addEventListener('displayweapons', () => Controller.dispatchEvent(new CustomEvent('closeoptions')));
 	}
 
 	#initHTML() {
@@ -49,8 +53,8 @@ class Application {
 					className: 'maincontent',
 					childs: [
 						this.#appOptions.htmlElement,
-						this.#appViewer.htmlElement,
 						this.#appItemList.htmlElement,
+						this.#appViewer.htmlElement,
 					]
 				}),
 				this.#appStatusbar.htmlElement,

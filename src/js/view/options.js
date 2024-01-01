@@ -1,10 +1,11 @@
+import { SceneExplorer, ShaderEditor } from 'harmony-3d';
 import { createElement, hide, toggle } from 'harmony-ui';
-
 import 'harmony-ui/dist/define/harmony-tab.js';
 import 'harmony-ui/dist/define/harmony-tab-group.js';
-import '../../css/options.css';
-import { SceneExplorer, ShaderEditor } from 'harmony-3d';
+
 import { Controller } from '../controller';
+
+import '../../css/options.css';
 
 export class Options {
 	#htmlElement;

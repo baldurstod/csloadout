@@ -32,6 +32,8 @@ export class ItemList {
 		Controller.addEventListener('displaycharacters', () => this.#showCharacterList());
 		Controller.addEventListener('displayweapons', () => this.#show(this.#htmlWeaponList));
 		//Controller.addEventListener('toggleoptions', () => toggle(this.#htmlElement));
+		Controller.addEventListener('closeitemlist', () => this.#hide());
+
 
 		return this.#htmlElement;
 	}
@@ -59,8 +61,8 @@ export class ItemList {
 
 	}
 
-	hide() {
-		hide(null);
+	#hide() {
+		hide(this.#htmlElement);
 	}
 
 	get htmlElement() {
