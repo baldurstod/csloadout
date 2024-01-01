@@ -19,4 +19,8 @@ export class Item {
 	isCustomPlayer() {
 		return this.#flexibleLoadoutSlot == 'customplayer';
 	}
+
+	get imageInventory() {
+		return this.#imageInventory;
+	}
 }

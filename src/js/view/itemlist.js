@@ -2,6 +2,8 @@ import { createElement, hide, show } from 'harmony-ui';
 
 import '../../css/itemlist.css';
 import { Controller } from '../controller';
+import { Loadout } from '../loadout/loadout';
+import { CS2_ECON_URL } from '../constants';
 
 export class ItemList {
 	#htmlElement;
@@ -27,7 +29,7 @@ export class ItemList {
 			],
 		});
 
-		Controller.addEventListener('displaycharacters', () => this.#show(this.#htmlCharacterList));
+		Controller.addEventListener('displaycharacters', () => this.#showCharacterList());
 		Controller.addEventListener('displayweapons', () => this.#show(this.#htmlWeaponList));
 		//Controller.addEventListener('toggleoptions', () => toggle(this.#htmlElement));
 
@@ -39,6 +41,22 @@ export class ItemList {
 		hide(this.#htmlWeaponList);
 		show(this.#htmlElement);
 		show(element);
+	}
+
+	async #showCharacterList() {
+		this.#show(this.#htmlCharacterList);
+		const customPlayers = await Loadout.getCustomPlayers();
+		console.log(customPlayers);
+
+		for (const customPlayer of customPlayers) {
+			console.log(customPlayer);
+			createElement('img', {
+				src: new URL(customPlayer.imageInventory + '.png', CS2_ECON_URL),
+				//src: customPlayer.imageInventory,
+				parent: this.#htmlCharacterList,
+			})
+		}
+
 	}
 
 	hide() {

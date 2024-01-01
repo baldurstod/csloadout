@@ -4,22 +4,37 @@ import { Controller } from '../controller';
 import { Item } from './item';
 
 class LoadoutClass {
+	#initItemsPromise;
+	#initialized = false;
 	#json;
 	#customPlayers = new Set();
+	#lang = 'english';
 
-	async init(lang = 'english') {
-		const response = await customFetch(new URL(`${ITEM_GAME_PATH}items_${lang}.json`, CS2_REPOSITORY));
+	setLang(lang) {
+		this.#lang = lang;
+	}
 
-		if (!response || !response.ok) {
-			return;
+	#init() {
+		if (!this.#initItemsPromise) {
+
+			this.#initItemsPromise = new Promise(async (resolve, reject) => {
+				const response = await customFetch(new URL(`${ITEM_GAME_PATH}items_${this.#lang}.json`, CS2_REPOSITORY));
+
+				if (!response || !response.ok) {
+					resolve(null);
+					return;
+				}
+
+				const json = await response.json();
+				if (json) {
+					this.#json = json;
+					this.#loadItems();
+					Controller.dispatchEvent(new CustomEvent('itemsloaded'));
+				}
+				resolve(true);
+			});
 		}
-
-		const json = await response.json();
-		if (json) {
-			this.#json = json;
-			this.#loadItems();
-			Controller.dispatchEvent(new CustomEvent('itemsloaded'));
-		}
+		return this.#initItemsPromise;
 	}
 
 	#loadItems() {
@@ -37,9 +52,12 @@ class LoadoutClass {
 				this.#customPlayers.add(item);
 			}
 		}
+	}
 
-		console.log(this.#customPlayers);
+	async getCustomPlayers() {
+		await this.#init();
 
+		return this.#customPlayers;
 	}
 };
 

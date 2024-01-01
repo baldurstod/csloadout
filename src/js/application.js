@@ -4,7 +4,6 @@ import { createElement } from 'harmony-ui';
 
 import { CS2_REPOSITORY } from './constants.js';
 import { Controller } from './controller.js';
-import { Loadout } from './loadout/loadout.js';
 import { showAboutLayer, showBugNotification } from './misc/about.js';
 import { Options } from './view/options.js';
 import { ItemList } from './view/itemlist.js';
@@ -31,7 +30,6 @@ class Application {
 		this.#initHTML();
 		this.#iniRepositories();
 		this.#appViewer.initModel();
-		Loadout.init();
 	}
 
 	#initListeners() {
