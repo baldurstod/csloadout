@@ -1,4 +1,5 @@
 export class Item {
+	#name;
 	#flexibleLoadoutSlot;
 	#imageInventory;
 	#modelPlayer;
@@ -11,6 +12,7 @@ export class Item {
 			return;
 		}
 
+		this.#name = json.name;
 		this.#flexibleLoadoutSlot = json.flexible_loadout_slot;
 		this.#imageInventory = json.image_inventory;
 		this.#modelPlayer = json.model_player;
@@ -18,6 +20,10 @@ export class Item {
 
 	isCustomPlayer() {
 		return this.#flexibleLoadoutSlot == 'customplayer';
+	}
+
+	get name() {
+		return this.#name;
 	}
 
 	get imageInventory() {

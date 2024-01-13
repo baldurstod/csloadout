@@ -1,5 +1,7 @@
 import { createElement, hide, show } from 'harmony-ui';
 
+import { ItemListItem } from './itemlistitem.js';
+
 import '../../css/itemlist.css';
 import { Controller } from '../controller';
 import { Loadout } from '../loadout/loadout';
@@ -52,13 +54,16 @@ export class ItemList {
 
 		for (const customPlayer of customPlayers) {
 			console.log(customPlayer);
-			createElement('img', {
-				src: new URL(customPlayer.imageInventory + '.png', CS2_ECON_URL),
+			createElement('item-list-item', {
+				item: customPlayer,
+				//src: new URL(customPlayer.imageInventory + '.png', CS2_ECON_URL),
 				//src: customPlayer.imageInventory,
 				parent: this.#htmlCharacterList,
-			})
+				events: {
+					click: event => this.selectItem(event.target.item),
+				},
+			});
 		}
-
 	}
 
 	#hide() {

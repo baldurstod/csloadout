@@ -63,7 +63,7 @@ class Application {
 	}
 
 	#iniRepositories() {
-		Repositories.addRepository(new Repository('cs2', CS2_REPOSITORY));
+		new Repositories().addRepository(new Repository('cs2', CS2_REPOSITORY));
 		Source2ModelManager.loadManifest('cs2');
 	}
 }
