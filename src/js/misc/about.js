@@ -1,6 +1,6 @@
-import { I18n } from "harmony-browser-utils/src/i18n";
+import { I18n } from 'harmony-browser-utils/src/i18n';
 import { NotificationManager } from 'harmony-browser-utils/src/notificationManager.js';
-import { TF2_GROUP_URL } from "../constants";
+import { TF2_GROUP_URL } from '../constants';
 
 export function showAboutLayer() {
 	let html = `${I18n.getString('#csloadout_service_provided')}<a href="http://steamcommunity.com/id/baldurstod/" target="_blank">Baldurs Tod</a><br>

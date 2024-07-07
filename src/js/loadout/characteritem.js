@@ -1,5 +1,5 @@
-import { Source2ModelManager } from "harmony-3d";
-import { loadoutScene } from "./scene";
+import { Source2ModelManager } from 'harmony-3d';
+import { loadoutScene } from './scene';
 
 export class CharacterItem {
 	#modelName;

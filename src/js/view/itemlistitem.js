@@ -1,5 +1,5 @@
-import { createElement } from "harmony-ui";
-import { CS2_ECON_URL } from "../constants";
+import { createElement } from 'harmony-ui';
+import { CS2_ECON_URL } from '../constants';
 
 import '../../css/itemlistitem.css';
 

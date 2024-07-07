@@ -30,6 +30,11 @@ class Application {
 		this.#initHTML();
 		this.#iniRepositories();
 		this.#appViewer.initModel();
+		this.#start();
+	}
+
+	#start() {
+
 	}
 
 	#initListeners() {
@@ -63,7 +68,7 @@ class Application {
 	}
 
 	#iniRepositories() {
-		new Repositories().addRepository(new Repository('cs2', CS2_REPOSITORY));
+		Repositories.addRepository(new Repository('cs2', CS2_REPOSITORY));
 		Source2ModelManager.loadManifest('cs2');
 	}
 }

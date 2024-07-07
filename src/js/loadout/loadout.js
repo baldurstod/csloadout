@@ -4,11 +4,18 @@ import { Controller } from '../controller';
 import { Item } from './item';
 
 class LoadoutClass {
+	static #instance;
 	#initItemsPromise;
 	#initialized = false;
 	#json;
-	#customPlayers = new Set();
+	#characters = new Set();
 	#lang = 'english';
+	constructor() {
+		if (LoadoutClass.#instance) {
+			return LoadoutClass.#instance;
+		}
+		LoadoutClass.#instance = this;
+	}
 
 	setLang(lang) {
 		this.#lang = lang;
@@ -43,13 +50,13 @@ class LoadoutClass {
 			return;
 		}
 
-		this.#customPlayers.clear();
+		this.#characters.clear();
 
 		for (const itemId in items) {
 			const itemJson = items[itemId];
 			const item = new Item(itemJson);
 			if (item.isCustomPlayer()) {
-				this.#customPlayers.add(item);
+				this.#characters.add(item);
 			}
 		}
 	}
@@ -57,7 +64,7 @@ class LoadoutClass {
 	async getCustomPlayers() {
 		await this.#init();
 
-		return this.#customPlayers;
+		return this.#characters;
 	}
 };
 
